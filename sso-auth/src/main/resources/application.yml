@@ -1,0 +1,18 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    system:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/oauth2_sso_db?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+      username: test
+      password: 123456
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+
+  main:
+    allow-bean-definition-overriding: true
