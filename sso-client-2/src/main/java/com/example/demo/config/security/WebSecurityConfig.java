@@ -2,7 +2,9 @@ package com.example.demo.config.security;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  * Security 安全认证相关配置
@@ -20,11 +22,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/login", "/api/test/*", "/user/info").permitAll()
-//                .anyRequest().authenticated()
-//                .and().csrf().disable();
-//    }
+    private final CorsFilter corsFilter;
+
+    public WebSecurityConfig(
+            CorsFilter corsFilter
+    ) {
+        this.corsFilter = corsFilter;
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                // 跨域配置
+//                .addFilterBefore(corsFilter, FilterSecurityInterceptor.class)
+
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and().csrf().disable();
+    }
 }

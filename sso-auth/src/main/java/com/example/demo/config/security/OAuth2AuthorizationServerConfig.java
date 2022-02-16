@@ -5,13 +5,13 @@ import com.example.demo.constant.SecurityConstants;
 import com.example.demo.domain.security.LoginUser;
 import com.example.demo.exception.CustomWebResponseExceptionTranslator;
 import com.example.demo.service.security.RedisClientDetailsService;
+import com.example.demo.service.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -40,7 +40,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     private RedisConnectionFactory redisConnectionFactory;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Autowired
     private TokenEnhancer tokenEnhancer;
@@ -49,9 +49,10 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      * 配置令牌端点(Token Endpoint)的安全约束
      */
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer security) {
         /* 配置token获取和验证时的策略 */
-        security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+        security.tokenKeyAccess("isAuthenticated()")
+                .checkTokenAccess("isAuthenticated()");
     }
 
     /**
@@ -66,7 +67,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      * 定义授权和令牌端点以及令牌服务
      */
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints
                 // 请求方式
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)

@@ -1,11 +1,14 @@
 server:
-  port: 9091
+  port: 8081
   servlet:
-    session:
-      cookie:
-        name: SSO-CLIENT1-SESSIONID # 自定义 Session 的 Cookie 名字，防止冲突。冲突后，会导致 SSO 登陆失败
+    context-path: /client1
 
-auth-server: http://127.0.0.1:9090 # 认证服务器地址localhost
+auth-server-url: http://oauth.com # 认证服务器后台地址
+client-web-url: http://client1-web.com
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
 
 security:
   oauth2:
@@ -13,9 +16,10 @@ security:
     client:
       client-id: client1
       client-secret: 123456
-      scope: read_hello,write_bye
-      user-authorization-uri: ${auth-server}/oauth/authorize # 获取用户的授权码地址
-      access-token-uri: ${auth-server}/oauth/token # 获取访问令牌的地址
+      scope: write_bye
+      user-authorization-uri: ${auth-server-url}/auth/oauth/authorize # 获取用户的授权码地址
+      access-token-uri: ${auth-server-url}/auth/oauth/token # 获取访问令牌的地址
     # OAuth2 Resource 配置，对应 ResourceServerProperties 类
     resource:
-      token-info-uri: ${auth-server}/oauth/check_token # 校验访问令牌是否有效的地址
+      user-info-uri: ${auth-server-url}/auth/auth/user
+      token-info-uri: ${auth-server-url}/auth/oauth/check_token # 校验访问令牌是否有效的地址

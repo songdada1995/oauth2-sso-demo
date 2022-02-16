@@ -17,8 +17,4 @@ public class UserController {
         return authentication;
     }
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "world";
-    }
 }
