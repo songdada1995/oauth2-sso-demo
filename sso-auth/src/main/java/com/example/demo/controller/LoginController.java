@@ -5,13 +5,14 @@
 //import org.springframework.security.oauth2.common.OAuth2AccessToken;
 //import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 //import org.springframework.security.oauth2.provider.token.TokenStore;
-//import org.springframework.web.bind.annotation.*;
+//import org.springframework.web.bind.annotation.DeleteMapping;
+//import org.springframework.web.bind.annotation.RequestHeader;
+//import org.springframework.web.bind.annotation.RestController;
 //
 //import javax.annotation.Resource;
 //
 //@RestController
-//@RequestMapping("/token")
-//public class TokenController {
+//public class LoginController {
 //
 //    @Resource
 //    private TokenStore tokenStore;
@@ -43,5 +44,4 @@
 //
 //        return "success";
 //    }
-//
 //}

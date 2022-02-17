@@ -23,15 +23,10 @@ public class UserController {
         return authentication;
     }
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "world";
-    }
-
     /**
      * 获取用户列表
      */
-    @PreAuthorize("@ss.hasPermi('system:user:list')")
+    @PreAuthorize("hasAuthority('system:user:list')")
     @GetMapping("/list")
     public List<Map<String, String>> list() {
         List<Map<String, String>> list = new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.AjaxResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/hello")
-    public String hello() {
-        return "world";
+    public AjaxResult hello() {
+        return AjaxResult.success("hello client2");
     }
 
 }

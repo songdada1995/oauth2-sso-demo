@@ -1,7 +1,15 @@
 server:
-  port: 9090
+  port: 8080
+  servlet:
+    context-path: /auth
+    session:
+      cookie:
+        name: SSO-SESSION
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
+
   datasource:
     system:
       driver-class-name: com.mysql.jdbc.Driver
@@ -14,5 +22,5 @@ spring:
     port: 6379
     password: 123456
 
-  main:
-    allow-bean-definition-overriding: true
+auth-server-url: http://oauth.sso.com
+auth-server-web-url: http://oauth-web.sso.com
