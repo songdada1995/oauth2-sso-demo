@@ -9,12 +9,13 @@ http://client1-web.com/client1Page/#/home
 
 C:\Windows\System32\drivers\etc
 
-127.0.0.1	oauth.com
-127.0.0.1	client1.com
-127.0.0.1	client2.com
-127.0.0.1	oauth-web.com
-127.0.0.1	client1-web.com
-127.0.0.1	client2-web.com
+127.0.0.1       oauth.com
+127.0.0.1       client1.com
+127.0.0.1       client2.com
+127.0.0.1       oauth-web.com
+127.0.0.1       client1-web.com
+127.0.0.1       client2-web.com
+
 
 ==========nginx 问题配置==========
 
@@ -123,4 +124,5 @@ http {
     }
 
 }
+
 ==========nginx 问题配置==========
