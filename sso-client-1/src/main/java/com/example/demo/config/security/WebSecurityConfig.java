@@ -36,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(corsFilter, FilterSecurityInterceptor.class)
 
                 .authorizeRequests()
+                .antMatchers("/login", "/demo").permitAll()
                 .anyRequest().authenticated()
                 .and().cors().and().csrf().disable();
     }

@@ -39,6 +39,7 @@ public class SecurityAuthenticationEntryPoint implements AuthenticationEntryPoin
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws IOException {
+        log.error("未登录");
         // 拼接url参数
         Map<String, String[]> paramMap = request.getParameterMap();
         StringBuilder param = new StringBuilder();

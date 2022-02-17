@@ -52,7 +52,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     public void configure(AuthorizationServerSecurityConfigurer security) {
         /* 配置token获取和验证时的策略 */
         security.tokenKeyAccess("isAuthenticated()")
-                .checkTokenAccess("isAuthenticated()");
+                .checkTokenAccess("isAuthenticated()")
+                .allowFormAuthenticationForClients();
     }
 
     /**

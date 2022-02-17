@@ -7,6 +7,7 @@ import com.example.demo.config.security.handler.SecurityAuthenticationSuccessHan
 import com.example.demo.service.security.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -85,6 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/logout",
                         "/login",
                         "/test/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // 异常处理

@@ -14,13 +14,13 @@ spring:
     system:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://127.0.0.1:3306/oauth2_sso_db?useSSL=false&useUnicode=true&characterEncoding=UTF-8
-      username: root
-      password: root
+      username: test
+      password: 123456
 
   redis:
     host: 127.0.0.1
     port: 6379
     password: 123456
 
-auth-server-url: http://oauth.com
-auth-server-web-url: http://oauth-web.com
+auth-server-url: http://oauth.sso.com
+auth-server-web-url: http://oauth-web.sso.com

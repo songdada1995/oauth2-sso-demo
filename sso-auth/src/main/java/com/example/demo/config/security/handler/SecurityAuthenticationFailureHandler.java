@@ -28,6 +28,7 @@ public class SecurityAuthenticationFailureHandler extends SimpleUrlAuthenticatio
     public void onAuthenticationFailure(HttpServletRequest request,
                                         HttpServletResponse response,
                                         AuthenticationException exception) throws IOException {
+        log.error("登录失败");
         log.error(exception.toString());
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter writer = response.getWriter();
