@@ -9,12 +9,12 @@ http://client1-web.com/client1Page/#/home
 
 C:\Windows\System32\drivers\etc
 
-127.0.0.1       oauth.com
-127.0.0.1       client1.com
-127.0.0.1       client2.com
-127.0.0.1       oauth-web.com
-127.0.0.1       client1-web.com
-127.0.0.1       client2-web.com
+127.0.0.1       oauth.sso.com
+127.0.0.1       client1.sso.com
+127.0.0.1       client2.sso.com
+127.0.0.1       oauth-web.sso.com
+127.0.0.1       client1-web.sso.com
+127.0.0.1       client2-web.sso.com
 
 
 ==========nginx 问题配置==========
@@ -54,7 +54,7 @@ http {
 
     server {
 		listen       80;
-		server_name  client1.com;
+		server_name  client1.sso.com;
 		location /client1/ {
 			proxy_set_header Host $host;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -64,7 +64,7 @@ http {
 	
 	server {
 		listen       80;
-		server_name  client1-web.com;
+		server_name  client1-web.sso.com;
 		location /client1Page/ {
 			proxy_set_header Host $host;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -77,7 +77,7 @@ http {
 
     server {
 		listen       80;
-		server_name  client2.com;
+		server_name  client2.sso.com;
 		location /client2/ {
 			proxy_set_header Host $host;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -87,7 +87,7 @@ http {
 	
     server {
 		listen       80;
-		server_name  client2-web.com;
+		server_name  client2-web.sso.com;
 		location /client2Page/ {
 			proxy_set_header Host $host;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -101,7 +101,7 @@ http {
 
     server {
         listen       80;
-        server_name  oauth.com;
+        server_name  oauth.sso.com;
 		location /auth/ {
 			proxy_set_header Host $host;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -111,7 +111,7 @@ http {
 
     server {
         listen       80;
-        server_name  oauth-web.com;
+        server_name  oauth-web.sso.com;
 		location /authPage/ {
 			proxy_set_header Host $host;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
