@@ -2,7 +2,7 @@
 oauth2 实现单点登录
 
 
-http://client1-web.com/client1Page/#/home
+http://client1-web.sso.com/client1Page/#/home
 
 可登录用户有admin/123456，test/123456
 
