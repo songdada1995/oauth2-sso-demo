@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.08 (64 bit)
 MySQL - 5.7.27-log : Database - oauth2_sso_db
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -37,7 +38,7 @@ CREATE TABLE `oauth_client_details` (
 
 /*Data for the table `oauth_client_details` */
 
-insert  into `oauth_client_details`(`client_id`,`resource_ids`,`client_secret`,`scope`,`authorized_grant_types`,`web_server_redirect_uri`,`authorities`,`access_token_validity`,`refresh_token_validity`,`additional_information`,`autoapprove`) values ('client1','','$2a$10$9WXY5PhzmHFw0pBmLrBXa.90aWbQ150slT4n3gS.RLYZM/Um2oTbu','read_hello,write_bye','authorization_code,refresh_token','http://127.0.0.1:9091/login',NULL,3600,864000,NULL,'true'),('client2','','$2a$10$9WXY5PhzmHFw0pBmLrBXa.90aWbQ150slT4n3gS.RLYZM/Um2oTbu','read_hello,write_bye','authorization_code,refresh_token','http://127.0.0.1:9092/login',NULL,3600,864000,NULL,'true');
+insert  into `oauth_client_details`(`client_id`,`resource_ids`,`client_secret`,`scope`,`authorized_grant_types`,`web_server_redirect_uri`,`authorities`,`access_token_validity`,`refresh_token_validity`,`additional_information`,`autoapprove`) values ('client1','','$2a$10$9WXY5PhzmHFw0pBmLrBXa.90aWbQ150slT4n3gS.RLYZM/Um2oTbu','read_hello,write_bye','authorization_code,refresh_token','http://client1.sso.com/client1/login',NULL,3600,864000,NULL,'true'),('client2','','$2a$10$9WXY5PhzmHFw0pBmLrBXa.90aWbQ150slT4n3gS.RLYZM/Um2oTbu','read_hello,write_bye','authorization_code,refresh_token','http://client2.sso.com/client2/login',NULL,3600,864000,NULL,'true');
 
 /*Table structure for table `sys_menu` */
 

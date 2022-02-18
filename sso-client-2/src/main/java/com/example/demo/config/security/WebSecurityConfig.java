@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.web.filter.CorsFilter;
 
 /**
@@ -24,9 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CorsFilter corsFilter;
 
-    public WebSecurityConfig(
-            CorsFilter corsFilter
-    ) {
+    public WebSecurityConfig(CorsFilter corsFilter) {
         this.corsFilter = corsFilter;
     }
 
@@ -34,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 // 跨域配置
-//                .addFilterBefore(corsFilter, FilterSecurityInterceptor.class)
+                .addFilterBefore(corsFilter, FilterSecurityInterceptor.class)
 
                 .authorizeRequests()
                 .anyRequest().authenticated()

@@ -11,7 +11,7 @@ public class TestController {
 
     @GetMapping("/hello")
     public AjaxResult hello() {
-        return AjaxResult.success("hello client1");
+        return AjaxResult.success("执行成功","hello client1");
     }
 
 }

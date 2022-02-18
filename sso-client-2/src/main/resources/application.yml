@@ -2,11 +2,9 @@ server:
   port: 8082
   servlet:
     context-path: /client2
-    session:
-      cookie:
-        name: SSO-CLIENT2-SESSIONID # 自定义 Session 的 Cookie 名字，防止冲突。冲突后，会导致 SSO 登陆失败
 
-auth-server-url: http://auth.com # 认证服务器后台地址
+auth-server-url: http://oauth.sso.com # 认证服务器后台地址
+client-web-url: http://client2-web.sso.com
 
 security:
   oauth2:
@@ -18,8 +16,11 @@ security:
       user-authorization-uri: ${auth-server-url}/auth/oauth/authorize # 获取用户的授权码地址
       access-token-uri: ${auth-server-url}/auth/oauth/token # 获取访问令牌的地址
     # OAuth2 Resource 配置，对应 ResourceServerProperties 类
-    resource:
-      user-info-uri: ${auth-server-url}/auth/auth/user
-      token-info-uri: ${auth-server-url}/auth/oauth/check_token # 校验访问令牌是否有效的地址
+#    resource:
+#      user-info-uri: ${auth-server-url}/auth/auth/user
+#      token-info-uri: ${auth-server-url}/auth/oauth/check_token # 校验访问令牌是否有效的地址
 
-client-web-url: http://client2.web.com
+    # jwt
+    resource:
+      jwt:
+        key-uri: ${auth-server-url}/auth/oauth/token_key
