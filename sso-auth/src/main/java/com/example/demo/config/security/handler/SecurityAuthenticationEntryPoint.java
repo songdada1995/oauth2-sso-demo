@@ -56,7 +56,7 @@ public class SecurityAuthenticationEntryPoint implements AuthenticationEntryPoin
         }
 
         // 未登录，返回授权url，带上参数is_redirect=true
-        String authUrl = authServerUrl + "/auth/oauth/authorize?" + param.toString() + "&is_redirect=true";
+        String authUrl = authServerUrl + "/oauth/authorize?" + param.toString() + "&is_redirect=true";
         log.info("*****" + authUrl);
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter writer = response.getWriter();

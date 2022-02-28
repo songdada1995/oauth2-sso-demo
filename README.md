@@ -9,10 +9,10 @@ http://client1-web.sso.com/client1Page/#/home
 
 C:\Windows\System32\drivers\etc
 
-127.0.0.1       oauth.sso.com
+127.0.0.1       auth.sso.com
 127.0.0.1       client1.sso.com
 127.0.0.1       client2.sso.com
-127.0.0.1       oauth-web.sso.com
+127.0.0.1       auth-web.sso.com
 127.0.0.1       client1-web.sso.com
 127.0.0.1       client2-web.sso.com
 

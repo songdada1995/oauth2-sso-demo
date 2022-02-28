@@ -3,12 +3,14 @@ package com.example.demo.config.security;
 import com.example.demo.constant.CacheConstants;
 import com.example.demo.constant.SecurityConstants;
 import com.example.demo.domain.security.LoginUser;
+import com.example.demo.exception.CustomWebResponseExceptionTranslator;
 import com.example.demo.service.security.RedisClientDetailsService;
 import com.example.demo.service.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -69,24 +71,24 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-//        endpoints
-//                // 请求方式
-//                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
-//                // 指定token存储位置
-//                .tokenStore(tokenStore())
-//                // 自定义令牌增强器
-//                .tokenEnhancer(tokenEnhancer)
-//                // 用户账号密码认证
-//                .userDetailsService(userDetailsService)
-//                // 指定认证管理器
-//                .authenticationManager(authenticationManager)
-//                // 是否重复使用 refresh_token
-//                .reuseRefreshTokens(false)
-//                // 自定义异常处理
-//                .exceptionTranslator(new CustomWebResponseExceptionTranslator());
+        endpoints
+                // 请求方式
+                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
+                // 指定token存储位置
+                .tokenStore(tokenStore())
+                // 自定义令牌增强器
+                .tokenEnhancer(tokenEnhancer)
+                // 用户账号密码认证
+                .userDetailsService(userDetailsService)
+                // 指定认证管理器
+                .authenticationManager(authenticationManager)
+                // 是否重复使用 refresh_token
+                .reuseRefreshTokens(false)
+                // 自定义异常处理
+                .exceptionTranslator(new CustomWebResponseExceptionTranslator());
 
-        endpoints.accessTokenConverter(jwtAccessTokenConverter())
-                .tokenStore(jwtTokenStore());
+//        endpoints.accessTokenConverter(jwtAccessTokenConverter())
+//                .tokenStore(jwtTokenStore());
 
     }
 

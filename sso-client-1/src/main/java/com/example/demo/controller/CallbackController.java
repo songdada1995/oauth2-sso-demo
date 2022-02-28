@@ -17,7 +17,7 @@ public class CallbackController {
 
     @GetMapping("/")
     public void callback(HttpServletResponse response) throws IOException {
-        log.info("重定向到client1前端home页面");
+        log.info("重定向到client1前端home页面：" + clientWebUrl + "/client1Page/#/home");
         response.sendRedirect(clientWebUrl + "/client1Page/#/home");
     }
 

@@ -3,8 +3,12 @@ server:
   servlet:
     context-path: /client2
 
-auth-server-url: http://oauth.sso.com # 认证服务器后台地址
+auth-server-url: http://auth.sso.com/auth # 认证服务器后台地址
 client-web-url: http://client2-web.sso.com
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
 
 security:
   oauth2:
@@ -13,14 +17,14 @@ security:
       client-id: client2
       client-secret: 123456
       scope: read_hello
-      user-authorization-uri: ${auth-server-url}/auth/oauth/authorize # 获取用户的授权码地址
-      access-token-uri: ${auth-server-url}/auth/oauth/token # 获取访问令牌的地址
+      user-authorization-uri: ${auth-server-url}/oauth/authorize # 获取用户的授权码地址
+      access-token-uri: ${auth-server-url}/oauth/token # 获取访问令牌的地址
     # OAuth2 Resource 配置，对应 ResourceServerProperties 类
-#    resource:
-#      user-info-uri: ${auth-server-url}/auth/auth/user
-#      token-info-uri: ${auth-server-url}/auth/oauth/check_token # 校验访问令牌是否有效的地址
-
-    # jwt
     resource:
-      jwt:
-        key-uri: ${auth-server-url}/auth/oauth/token_key
+      user-info-uri: ${auth-server-url}/auth/user
+      token-info-uri: ${auth-server-url}/oauth/check_token # 校验访问令牌是否有效的地址
+
+
+#    resource:
+#      jwt:
+#        key-uri: ${auth-server-url}/oauth/token_key
